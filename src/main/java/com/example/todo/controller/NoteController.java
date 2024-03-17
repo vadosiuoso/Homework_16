@@ -62,16 +62,4 @@ public class NoteController {
         return result;
     }
 
-    @PostConstruct
-    public void init(){
-        Note note1 = new Note();
-        note1.setTitle("First Note");
-        note1.setContent("Here is some simple text");
-        Note note2 = new Note();
-        note2.setTitle("Second Note");
-        note2.setContent("Invaders must die");
-        noteService.add(note1);
-        noteService.add(note2);
-    }
-
 }
