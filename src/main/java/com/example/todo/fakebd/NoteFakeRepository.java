@@ -3,9 +3,9 @@ package com.example.todo.fakebd;
 import com.example.todo.model.Note;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
 @Component

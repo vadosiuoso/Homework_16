@@ -2,6 +2,8 @@ package com.example.todo.dao;
 
 import com.example.todo.fakebd.NoteFakeRepository;
 import com.example.todo.model.Note;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,9 +40,7 @@ public class NoteServiceImpl implements NoteService{
     @Override
     public void update(Note note) {
        if(noteFakeRepository.getNotes().containsKey(note.getId())){
-           Note n = getById(note.getId());
-           n.setTitle(note.getTitle());
-           n.setContent(note.getContent());
+           noteFakeRepository.getNotes().put(note.getId(), note);
        }else{
            throw new RuntimeException();
        }
@@ -50,5 +50,14 @@ public class NoteServiceImpl implements NoteService{
     @Override
     public Note getById(long id) {
         return noteFakeRepository.getNotes().get(id);
+    }
+
+    @PostConstruct
+    public void init(){
+
+    }
+    @PreDestroy
+    public void destroy(){
+
     }
 }

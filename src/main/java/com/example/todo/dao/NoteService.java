@@ -1,7 +1,6 @@
 package com.example.todo.dao;
 
 import com.example.todo.model.Note;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

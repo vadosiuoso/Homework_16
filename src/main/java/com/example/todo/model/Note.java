@@ -4,13 +4,18 @@ import java.util.Random;
 import java.util.UUID;
 
 public class Note {
-    private final long id = new Random().nextLong();
+    private long id = new Random().nextLong();
     private String title;
     private String content;
 
 
+
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
