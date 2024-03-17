@@ -1,11 +1,9 @@
 package com.example.todo.controller;
 
 
-import com.example.todo.dao.NoteService;
 import com.example.todo.model.Note;
-import jakarta.annotation.PostConstruct;
+import com.example.todo.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,18 +11,22 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
-@Controller
+@RestController
 @Validated
 @RequestMapping("/note")
 public class NoteController {
 
-    @Autowired
-    private NoteService noteService;
+    private final NoteService noteService;
+
+
+    public NoteController (@Autowired NoteService noteService){
+        this.noteService = noteService;
+    }
 
     @GetMapping("/list")
     public ModelAndView noteList(){
         ModelAndView result = new ModelAndView("allNotes");
-        List<Note> notes = noteService.listAll();
+        List<Note> notes = noteService.findAll();
         result.addObject("notes", notes);
         return result;
     }

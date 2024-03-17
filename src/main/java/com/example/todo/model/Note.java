@@ -1,14 +1,22 @@
 package com.example.todo.model;
 
-import java.util.Random;
-import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Note {
-    private long id = new Random().nextLong();
+    @Id()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String title;
     private String content;
 
 
+    public Note() {
+    }
 
     public long getId() {
         return id;
