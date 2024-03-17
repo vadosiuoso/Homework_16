@@ -39,9 +39,7 @@ public class NoteController {
 
     @PostMapping("/save")
     public ModelAndView saveNote(@ModelAttribute("note") Note note){
-        System.out.println(note.getId());
         Note ne = noteService.add(note);
-        System.out.println(ne.getId());
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/note/list");
         return new ModelAndView(redirectView);
@@ -55,7 +53,6 @@ public class NoteController {
 
     @GetMapping("/edit")
     public ModelAndView editNote(@RequestParam("id") Long id){
-        System.out.println("edited note " + id);
         Note note = noteService.getById(id);
         ModelAndView result = new ModelAndView("addNote");
         result.addObject("note", note);
