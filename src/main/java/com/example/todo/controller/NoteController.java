@@ -53,7 +53,7 @@ public class NoteController {
         return noteList();
     }
 
-    @GetMapping("/edit")
+    @PostMapping("/edit")
     public ModelAndView editNote(@RequestParam("id") Long id){
         Note note = noteService.getById(id);
         ModelAndView result = new ModelAndView("addNote");
